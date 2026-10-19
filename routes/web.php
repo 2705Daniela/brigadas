@@ -131,18 +131,23 @@ Route::prefix('admin')
     });
 
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    // Dashboard
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('auth')
+    ->group(function () {
 
-    // Brigadistas
-    Route::get('/brigadistas/asistencias', [AdminController::class, 'asistencias'])->name('brigadistas.asistencias');
-    Route::get('/brigadistas/lista_municipios', [AdminController::class, 'listaMunicipios'])->name('brigadistas.lista_municipios');
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])
+            ->name('dashboard');
 
-    // Logout
-    Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+        Route::get('/brigadistas/asistencias', [AdminController::class, 'asistencias'])
+            ->name('brigadistas.asistencias');
 
-});
+        Route::get('/brigadistas/lista_municipios', [AdminController::class, 'listaMunicipios'])
+            ->name('brigadistas.lista_municipios');
+
+        Route::post('/logout', [AdminController::class, 'logout'])
+            ->name('logout');
+    });
 
 //Rutas definidas para las accion es realizadas en la pantalla gestionar
 Route::prefix('admin/brigadistas')->name('admin.brigadistas.')->group(function () {
@@ -357,7 +362,7 @@ Route::get('/admin/credenciales', [AdminController::class, 'credenciales'])
     ->name('admin.credenciales');
 Route::get('/admin/credenciales/{id}/pdf', [AdminController::class, 'credencialPdf']
 )->name('admin.credencial.pdf');
-Route::get('/admin/credenciales/filtros', [CredencialController::class, 'filtros'])->name('admin.lista.filtros');
+//Route::get('/admin/credenciales/filtros', [CredencialController::class, 'filtros'])->name('admin.lista.filtros');
 Route::get(
     '/admin/credenciales/descargar-seleccionadas',
     [AdminController::class, 'descargarCredencialesSeleccionadas']
