@@ -20,4 +20,11 @@ class Registro extends Model
     public function brigada() {
         return $this->belongsTo(Brigada::class);
     }
+
+    
+    public function statusSalud()
+    {
+    return $this->hasOne(StatusSalud::class, 'registro_id');
+    }
+
 }

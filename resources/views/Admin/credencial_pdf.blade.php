@@ -42,7 +42,7 @@
 
     .header-frente {
         position: absolute;
-        top: .7cm;
+        top: 1.2cm;
         width: 100%;
         text-align: center;
         z-index: 5;
@@ -197,7 +197,7 @@
     </div>
 
     <div class="header-frente">
-        <img src="{{ public_path('images/titi.png') }}" class="titulo-img">
+        <img src="{{ public_path('images/brig.png') }}" class="titulo-img">
     </div>
 
     <div class="foto-container">
@@ -221,6 +221,7 @@
     <div class="footer-logos">
         <img src="{{ public_path('images/ipn.png') }}" class="logo-ipn-frente">
     </div>
+
 </td>
 
 

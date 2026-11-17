@@ -11,7 +11,7 @@ class StatusSalud extends Model
 
     protected $table = 'status_salud'; // Asegúrate que coincida con tu migración
     protected $fillable = [
-        'brigadista_id',
+        'registro_id',
         'cardiovascular',
         'cardiovascular_detalle',
         'hipertension',
@@ -49,8 +49,8 @@ class StatusSalud extends Model
         'fecha_status',
     ];
 
-    public function brigadista()
+     public function registro()
     {
-        return $this->belongsTo(Brigadista::class);
+        return $this->belongsTo(Registro::class, 'registro_id');
     }
 }
